@@ -27,6 +27,7 @@ function raf(time) {
 requestAnimationFrame(raf);
 
 document.addEventListener("DOMContentLoaded", () => {
+
   // Background animation
   const interBubble = document.querySelector(".interactive");
   let curX = 0;
@@ -169,7 +170,7 @@ workCards.forEach((card) => {
 
   image.addEventListener("mouseleave", () => {
     cursor.removeText();
-    cursor.hide();
+    // cursor.hide();
     document.body.style.cursor = "default";
   });
 
@@ -181,7 +182,7 @@ workCards.forEach((card) => {
 
   h4.addEventListener("mouseleave", () => {
     cursor.removeText();
-    cursor.hide();
+    // cursor.hide();
     document.body.style.cursor = "default";
   });
 
