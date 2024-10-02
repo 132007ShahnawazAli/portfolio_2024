@@ -451,7 +451,7 @@ header {
   font-weight: 400;
   color: #f8f8ff;
   text-align: end;
-  opacity: 0;
+  opacity: 0.8;
   margin-bottom: 7vw;
 }
 
@@ -528,4 +528,9 @@ header {
     height: .8vw;
     fill: #f8f8ff;
   }
+}
+
+.text{
+  font-size: xx-large;
+  font-family: var(--primary-font);
 }

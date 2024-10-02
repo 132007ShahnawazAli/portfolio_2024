@@ -103,18 +103,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
   workCards.forEach((card, i) => {
     const image = card.querySelector("img");
-    const p = card.querySelector("p");
     const h4 = card.querySelector("h4");
+    image.style.willChange = 'transform, opacity';
+    h4.style.willChange = 'opacity';
 
     gsap.fromTo(
       image,
       {
-        scale: 0,
+        // scale: 0,
         opacity: 0,
       },
       {
-        scale: 1,
-        transformOrigin: "top bottom",
         opacity: 1,
         scrollTrigger: {
           trigger: card,
@@ -124,22 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
         },
       }
     );
-
-    gsap.fromTo(
-      p,
-      {
-        opacity: 0,
-      },
-      {
-        opacity: 0.8,
-        scrollTrigger: {
-          trigger: card,
-          start: "top 70%",
-          end: "top 10%",
-          scrub: true,
-        },
-      }
-    );
+    
     gsap.fromTo(
       h4,
       {
