@@ -107,6 +107,8 @@ workCards.forEach((card, i) => {
   const p = card.querySelector("p");
   const h4 = card.querySelector("h4");
 
+  
+
   gsap.fromTo(
     image,
     {
@@ -135,7 +137,7 @@ workCards.forEach((card, i) => {
       opacity: .8,
       scrollTrigger: {
         trigger: card,
-        start: "top 50%",
+        start: "top 70%",
         end: "top 10%",
         scrub: true,
       },
