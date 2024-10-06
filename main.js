@@ -4,7 +4,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from "split-type";
 import MouseFollower from "mouse-follower";
-
+import LocomotiveScroll from "locomotive-scroll";
 
 // GSAP ScrollTrigger Plugin Registration
 gsap.registerPlugin(ScrollTrigger);
@@ -17,17 +17,13 @@ let cursor = new MouseFollower({
   skewing: 10,
 });
 
-
-// Lenis animation
-const lenis = new Lenis();
-function raf(time) {
-  lenis.raf(time);
-  requestAnimationFrame(raf);
-}
-requestAnimationFrame(raf);
+const locomotiveScroll = new LocomotiveScroll({
+  lenisOptions: {
+    wrapper: window,
+  },
+});
 
 document.addEventListener("DOMContentLoaded", () => {
-
   // Background animation
   const interBubble = document.querySelector(".interactive");
   let curX = 0;
@@ -186,8 +182,34 @@ workCards.forEach((card) => {
     document.body.style.cursor = "default";
   });
 
-
   image.addEventListener("click", () => {
     link.click();
   });
+});
+
+
+
+
+// scroll arrow for mobile devices 
+document.addEventListener("DOMContentLoaded", () => {
+  const scrollArrow = document.querySelector(".scroll-arrow");
+
+  function handleResize() {
+    if (window.innerWidth <= 768) {
+      if (scrollArrow) {
+        scrollArrow.remove();
+      }
+    } else {
+      if (!document.querySelector(".scroll-arrow")) {
+        const newScrollArrow = document.createElement("div");
+        newScrollArrow.className = "scroll-arrow";
+        newScrollArrow.innerHTML = "<svg width=\"8\" height=\"77\" viewBox=\"0 0 8 77\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\" class=\"scroll-arrow\"><path d=\"M4.5 1L4.5 0.5L3.5 0.5L3.5 1L4.5 1ZM3.64645 76.3536C3.84171 76.5488 4.15829 76.5488 4.35356 76.3536L7.53554 73.1716C7.7308 72.9763 7.7308 72.6597 7.53554 72.4645C7.34027 72.2692 7.02369 72.2692 6.82843 72.4645L4 75.2929L1.17158 72.4645C0.976314 72.2692 0.659731 72.2692 0.464469 72.4645C0.269207 72.6597 0.269207 72.9763 0.464469 73.1716L3.64645 76.3536ZM3.5 1L3.5 76L4.5 76L4.5 1L3.5 1Z\" fill=\"white\" /></svg>";
+        document.querySelector(".hero-showcase").appendChild(newScrollArrow);
+      }
+    }
+  }
+
+  handleResize();
+
+  window.addEventListener("resize", handleResize);
 });
