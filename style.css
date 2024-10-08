@@ -36,7 +36,7 @@ body,
 }
 
 /* BACKGROUND ANIMATIONS */
-/* @keyframes moveInCircle {
+@keyframes moveInCircle {
   0% {
     transform: rotate(0deg);
   }
@@ -70,7 +70,7 @@ body,
   100% {
     transform: translateX(-50%) translateY(-10%);
   }
-} */
+}
 
 .background {
   width: 100vw;
@@ -82,9 +82,18 @@ body,
   top: 0;
   left: 0;
 
-  .noise-filter-svg {
+  .bg-overlay{
     position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    opacity: .4;
+    background-image: url(/noise.png);
   }
+
+  /* .noise-filter-svg {
+    position: absolute;
+  } */
 
   .gradients-container {
     filter: url(#goo) blur(40px);
@@ -215,11 +224,10 @@ header {
 
 .hero-h1 {
   font-family: var(--primary-font);
-  width: 70%;
+  width: 90%;
   text-align: center;
   font-size: 5vw;
   mix-blend-mode: overlay;
-  /* margin-top: -5%; */
 }
 
 .hero-h1::selection {
@@ -260,8 +268,6 @@ header {
 
 .hero-showcase {
   display: flex;
-  /* margin-top: 2vw; */
-  /* gap: .2vw; */
   justify-content: space-between;
   align-items: center;
   text-transform: uppercase;
@@ -661,6 +667,10 @@ footer{
 /* Media Queries */
 @media screen and (max-width: 768px) {
 
+  .links-list a{
+    display: none;
+  }
+
   .about-showcase {
     margin-left: -.4rem;
   }
@@ -679,35 +689,19 @@ footer{
     height: fit-content;
   }
   .hero-showcase {
-    flex-direction: row;
-    gap: 1vw;
-
-    h3 {
-      font-size: 1.5vw;
-    }
-    p {
-      font-size: 1.2vw;
-    }
+    display: none;
   }
 
   .scroll-arrow{
     display: none;
   }
 
-  .hero-showcase{
-    margin-top: 5vw;
-    flex-direction: column;
-    /* h3{
-      font-size: 4vw;
-    }
-    p{
-      font-size: 3vw;
-    } */
-  }
 
   .about-section {
     h3 {
       font-size: 6vw;
+      margin-top: 7vw;
+      width: 100%;
     }
 
     .about-myself {
@@ -724,6 +718,11 @@ footer{
     .about-myself-right {
       font-size: 1.2vw;
     }
+  }
+
+
+  .work-card{
+    margin: 4vw 0;
   }
 
   .works-heading{
@@ -757,6 +756,7 @@ footer{
   }
 
   .contact-form form{
+    padding-bottom: 7vw;
     input{
       padding: 1vw;
       font-size: 2vw;
@@ -783,4 +783,6 @@ footer{
   .button-text {
     font-size: 2vw;
   }
+
+
 }
